@@ -7,3 +7,4 @@ __pycache__
 /db/__pycache__
 /core/__pycache__
 /routes/__pycache__
+/utils/__pycache__

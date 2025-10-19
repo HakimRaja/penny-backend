@@ -11,6 +11,10 @@ class UserResponse(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
-    
+
     class Config:
         orm_mode = True
+
+class UserLogin(BaseModel):
+    email : EmailStr
+    password : str

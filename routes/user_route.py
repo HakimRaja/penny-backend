@@ -1,8 +1,8 @@
 from fastapi import APIRouter,Depends,HTTPException,status
 from sqlalchemy.orm import Session
 from db.database import get_db
-from schemas.user_schema import UserCreate,UserResponse
-from controllers.user_controlller import create_user
+from schemas.user_schema import UserCreate,UserResponse,UserLogin
+from controllers.user_controlller import create_user,login_user
 from db.models.user_model import User
 
 router = APIRouter(prefix="/user",tags=["Users"])
@@ -13,3 +13,7 @@ def register_user(user : UserCreate ,db: Session = Depends(get_db)):
     if existing_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="User already registered!")
     return create_user(user,db)
+
+@router.post("/login")
+def login(user : UserLogin,db: Session=Depends(get_db)):
+    return login_user(user,db)
