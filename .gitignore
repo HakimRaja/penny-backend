@@ -1,6 +1,9 @@
 .env
+alembic.ini
+
 /venv
 __pycache__
-
+/db/migrations
 /db/__pycache__
 /core/__pycache__
+/routes/__pycache__
